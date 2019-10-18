@@ -1,0 +1,24 @@
+
+* IPageLayout 透视图布局管理器 布局
+
+public void createInitialLayout(IPageLayout pageLayout) {
+	    // 编辑区域
+		String editorArea = pageLayout.getEditorArea();
+
+		// 布局
+		IFolderLayout folderTopLeft = pageLayout.createFolder("topLeft", IPageLayout.LEFT, (float) 0.25, editorArea); //$NON-NLS-1$
+		folderTopLeft.addView(ProjectExplorer.VIEW_ID);
+		folderTopLeft.addPlaceholder(CUIPlugin.CVIEW_ID);
+		folderTopLeft.addPlaceholder(IPageLayout.ID_RES_NAV);
+		folderTopLeft.addPlaceholder(IPageLayout.ID_BOOKMARKS);
+
+		/**
+		 * 在 项目资源管理器（ProjectExplorer.VIEW_ID）的页面下，新建一个IFolderLayout，用于显示目标机类表视图
+		 */
+		// 创建Device编辑区设备列表区域布局
+        IFolderLayout leftFolderLayout = pageLayout.createFolder("leftFolder", IPageLayout.BOTTOM, 0.18F,ProjectExplorer.VIEW_ID); // left
+        // 设备列表区域添加设备列表视图
+        leftFolderLayout.addView("com.acce.hyide.product.gadget.navigator.view");
+
+
+	}
